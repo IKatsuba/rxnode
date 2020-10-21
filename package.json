@@ -21,6 +21,7 @@
     "help": "nx help",
     "lint": "nx workspace-lint && nx lint",
     "nx": "nx",
+    "release": "semantic-release",
     "start": "nx serve",
     "test": "nx test",
     "update": "nx migrate latest",
