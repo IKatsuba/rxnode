@@ -14,9 +14,11 @@
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
-      "@rxnode/core": ["libs/core/src/index.ts"]
+      "@rxnode/core": ["libs/core/src/index.ts"],
+      "@rxnode/fs": ["libs/fs/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
