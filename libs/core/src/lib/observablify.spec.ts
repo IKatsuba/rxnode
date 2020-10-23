@@ -3,7 +3,7 @@ import { observablify } from './observablify';
 function completeFn(
   str: string,
   num: number,
-  callback: (err: Error, result?: 'done') => void
+  callback: (err: Error, result: 'done') => void
 ) {
   callback(null, 'done');
 }
@@ -22,7 +22,7 @@ describe('observablify', () => {
 
     const a = observablify(completeFn);
 
-    expect(await a('1', 1).toPromise()).toEqual(['done']);
+    expect(await a('1', 1).toPromise()).toEqual('done');
   });
 
   it('should be', async () => {

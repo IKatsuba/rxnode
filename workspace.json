@@ -58,7 +58,7 @@
             "tsConfig": "libs/fs/tsconfig.lib.json",
             "packageJson": "libs/fs/package.json",
             "main": "libs/fs/src/index.ts",
-            "assets": ["libs/fs/*.md"]
+            "assets": ["libs/fs/*.md", "libs/fs/.npmignore"]
           }
         }
       }
