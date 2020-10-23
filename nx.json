@@ -25,6 +25,9 @@
   "projects": {
     "core": {
       "tags": []
+    },
+    "fs": {
+      "tags": []
     }
   }
 }
