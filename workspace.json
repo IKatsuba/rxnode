@@ -89,7 +89,7 @@
             "tsConfig": "libs/child-process/tsconfig.lib.json",
             "packageJson": "libs/child-process/package.json",
             "main": "libs/child-process/src/index.ts",
-            "assets": ["libs/child-process/*.md"]
+            "assets": ["libs/child-process/*.md", "libs/child-process/.npmignore"]
           }
         }
       }
