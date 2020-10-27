@@ -14,6 +14,12 @@
         "pkgRoot": "./dist/libs/fs"
       }
     ],
+    [
+      "@semantic-release/npm",
+      {
+        "pkgRoot": "./dist/libs/child-process"
+      }
+    ],
     "@semantic-release/github"
   ]
 }
