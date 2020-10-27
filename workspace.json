@@ -62,6 +62,37 @@
           }
         }
       }
+    },
+    "child-process": {
+      "root": "libs/child-process",
+      "sourceRoot": "libs/child-process/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/child-process/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/child-process/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/child-process",
+            "tsConfig": "libs/child-process/tsconfig.lib.json",
+            "packageJson": "libs/child-process/package.json",
+            "main": "libs/child-process/src/index.ts",
+            "assets": ["libs/child-process/*.md"]
+          }
+        }
+      }
     }
   },
   "cli": {

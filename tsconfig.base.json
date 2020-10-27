@@ -18,7 +18,8 @@
     "baseUrl": ".",
     "paths": {
       "@rxnode/core": ["libs/core/src/index.ts"],
-      "@rxnode/fs": ["libs/fs/src/index.ts"]
+      "@rxnode/fs": ["libs/fs/src/index.ts"],
+      "@rxnode/child_process": ["libs/child-process/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

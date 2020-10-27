@@ -1,6 +1,6 @@
 {
-  "name": "@rxnode/fs",
-  "version": "0.0.0-development",
+  "name": "@rxnode/child_process",
+  "version": "0.0.1",
   "license": "MIT",
   "keywords": [
     "rxjs",
@@ -9,7 +9,7 @@
     "rx-node"
   ],
   "author": "Igor Katsuba <katsuba.igor@gmail.com>",
-  "description": "fs package for rxnode",
+  "description": "child_process package for rxnode",
   "publishConfig": {
     "access": "public"
   },

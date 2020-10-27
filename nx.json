@@ -28,6 +28,9 @@
     },
     "fs": {
       "tags": []
+    },
+    "child-process": {
+      "tags": []
     }
   }
 }
