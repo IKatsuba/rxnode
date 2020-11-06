@@ -1,5 +1,3 @@
 xdescribe('http', () => {
-  it('should work', () => {
-    
-  });
+  // non empty block
 });
