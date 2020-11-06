@@ -89,7 +89,41 @@
             "tsConfig": "libs/child-process/tsconfig.lib.json",
             "packageJson": "libs/child-process/package.json",
             "main": "libs/child-process/src/index.ts",
-            "assets": ["libs/child-process/*.md", "libs/child-process/.npmignore"]
+            "assets": [
+              "libs/child-process/*.md",
+              "libs/child-process/.npmignore"
+            ]
+          }
+        }
+      }
+    },
+    "http": {
+      "root": "libs/http",
+      "sourceRoot": "libs/http/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/http/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/http/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/http",
+            "tsConfig": "libs/http/tsconfig.lib.json",
+            "packageJson": "libs/http/package.json",
+            "main": "libs/http/src/index.ts",
+            "assets": ["libs/http/*.md"]
           }
         }
       }

@@ -20,6 +20,12 @@
         "pkgRoot": "./dist/libs/child-process"
       }
     ],
+    [
+      "@semantic-release/npm",
+      {
+        "pkgRoot": "./dist/libs/http"
+      }
+    ],
     "@semantic-release/github"
   ]
 }

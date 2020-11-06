@@ -31,6 +31,9 @@
     },
     "child-process": {
       "tags": []
+    },
+    "http": {
+      "tags": []
     }
   }
 }
