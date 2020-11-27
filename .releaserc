@@ -26,28 +26,6 @@
         "pkgRoot": "./dist/libs/http"
       }
     ],
-    [
-      "@semantic-release/github",
-      {
-        "assets": [
-          {
-            "path": "dist/libs/child-process",
-            "label": "@rxnode/child_process"
-          },
-          {
-            "path": "dist/libs/core",
-            "label": "@rxnode/core"
-          },
-          {
-            "path": "dist/libs/fs",
-            "label": "@rxnode/fs"
-          },
-          {
-            "path": "dist/libs/http",
-            "label": "@rxnode/http"
-          }
-        ]
-      }
-    ]
+    "@semantic-release/github"
   ]
 }

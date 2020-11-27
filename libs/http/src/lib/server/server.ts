@@ -5,9 +5,9 @@ import {
   ServerResponse,
 } from 'http';
 import { AddressInfo, ListenOptions, Socket } from 'net';
-import { fromEvent, Observable, Observer } from 'rxjs';
+import { fromEvent, Observable, Observer, Subject } from 'rxjs';
 import { observablify, watchify } from '@rxnode/core';
-import { take } from 'rxjs/operators';
+import { take, takeUntil } from 'rxjs/operators';
 
 export class Server extends Observable<
   [req: IncomingMessage, res: ServerResponse]
@@ -16,59 +16,55 @@ export class Server extends Observable<
   private readonly observers: Observer<
     [req: IncomingMessage, res: ServerResponse]
   >[];
+  private destroy$: Subject<void>;
 
   constructor(options?: ServerOptions) {
     let server: OriginalServer;
-    let error: Error;
+    const destroy$ = new Subject<void>();
+    const messages = new Subject<[req: IncomingMessage, res: ServerResponse]>();
 
     try {
       server = new OriginalServer(
         options,
         (req: IncomingMessage, res: ServerResponse) => {
-          this.observers.forEach((observer) => {
-            observer.next([req, res]);
-          });
+          messages.next([req, res]);
         }
       );
     } catch (e) {
-      error = e;
+      messages.error(e);
     }
 
     fromEvent(server, 'close')
       .pipe(take(1))
       .subscribe(() => {
-        this._closed = true;
+        this.destroy$.next();
+        this.destroy$.complete();
 
-        this.observers.forEach((observer) => {
-          observer.complete();
-        });
+        messages.complete();
       });
 
     super((subscriber) => {
-      if (this.closed) {
+      if (messages.closed) {
         subscriber.complete();
-      } else if (error) {
-        subscriber.error(error);
+      } else if (messages.hasError) {
+        subscriber.error(messages.thrownError);
       } else {
-        this.observers.push(subscriber);
+        messages
+          .pipe(takeUntil(destroy$))
+          .subscribe((value) => {
+            subscriber.next(value);
+          })
+          .add(subscriber);
       }
-
-      return () => {
-        this.observers.splice(this.observers.indexOf(subscriber), 1);
-
-        subscriber.unsubscribe();
-      };
     });
 
-    this._closed = false;
+    this.destroy$ = destroy$;
     this.observers = [];
     this._server = server;
   }
 
-  private _closed;
-
-  get closed(): boolean {
-    return this._closed;
+  get closed(): Observable<void> {
+    return this.destroy$.asObservable();
   }
 
   get maxConnections(): number {
@@ -143,7 +139,7 @@ export class Server extends Observable<
   addListener(
     event: string | 'close' | 'connection' | 'error' | 'listening'
   ): Observable<any | void | Socket | Error> {
-    return fromEvent(this._server, event);
+    return fromEvent(this._server, event).pipe(takeUntil(this.destroy$));
   }
 
   address(): AddressInfo | string {
@@ -193,9 +189,9 @@ export class Server extends Observable<
     const listen = watchify<
       [port?: any, hostname?: string | number, backlog?: number],
       []
-    >(this._server.listen.bind(this._server), { closeOnUnsubscribe: false });
+    >(this._server.listen.bind(this._server));
 
-    return listen(port, hostname, backlog).pipe(take(1));
+    return listen(port, hostname, backlog).pipe(takeUntil(this.destroy$));
   }
 
   on(event: string): Observable<any>;
@@ -228,7 +224,7 @@ export class Server extends Observable<
   prependListener(
     event: string | 'close' | 'connection' | 'error' | 'listening'
   ): Observable<void | Error | Socket | any> {
-    return this.addListener(event).pipe(take(1));
+    return this.addListener(event);
   }
 
   prependOnceListener(event: string): Observable<any>;
@@ -239,7 +235,7 @@ export class Server extends Observable<
   prependOnceListener(
     event: string | 'close' | 'connection' | 'error' | 'listening'
   ): Observable<void | Error | Socket | any> {
-    return this.once(event).pipe(take(1));
+    return this.once(event);
   }
 
   ref(): this {
