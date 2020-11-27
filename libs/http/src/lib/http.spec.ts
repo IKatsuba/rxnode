@@ -8,7 +8,7 @@ describe('http', () => {
   beforeAll(async () => {
     server = new Server();
 
-    await server.listen(4200, 'localhost').toPromise();
+    server.listen(4200, 'localhost').subscribe();
 
     server.subscribe(([, res]) => {
       res.writeHead(200);
