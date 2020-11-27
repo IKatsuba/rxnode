@@ -55,7 +55,8 @@ export function observablify<A extends Arguments, R extends Results = []>(
 }
 
 export function watchify<A extends Arguments, R extends Results>(
-  fn: (...args: [...A, Callback<R>]) => any
+  fn: (...args: [...A, Callback<R>]) => any,
+  { closeOnUnsubscribe: closeOnUnsubscribe = true } = {}
 ): (...args: A) => Observable<VoidOrItemOrItems<R>> {
   return (...args: A) => {
     return new Observable<VoidOrItemOrItems<R>>((subscriber) => {
@@ -71,7 +72,7 @@ export function watchify<A extends Arguments, R extends Results>(
 
       return () => {
         subscriber.unsubscribe();
-        watcher && watcher.close && watcher.close();
+        closeOnUnsubscribe && watcher && watcher.close && watcher.close();
       };
     });
   };
