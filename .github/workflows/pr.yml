@@ -16,6 +16,11 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
+      - name: NX Cache
+        uses: actions/cache@v2
+        with:
+          path: ./.cache
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
       - name: Install
         run: |
           npm ci
@@ -34,6 +39,11 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
+      - name: NX Cache
+        uses: actions/cache@v2
+        with:
+          path: ./.cache
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
       - name: Install
         run: |
           npm ci
@@ -52,6 +62,11 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
+      - name: NX Cache
+        uses: actions/cache@v2
+        with:
+          path: ./.cache
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
       - name: Install
         run: |
           npm ci
