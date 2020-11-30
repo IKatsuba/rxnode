@@ -5,7 +5,7 @@ import {
   ServerResponse,
 } from 'http';
 import { AddressInfo, ListenOptions, Socket } from 'net';
-import { fromEvent, Observable, Observer, Subject } from 'rxjs';
+import { fromEvent, Observable, Subject } from 'rxjs';
 import { observablify, watchify } from '@rxnode/core';
 import { take, takeUntil } from 'rxjs/operators';
 
@@ -13,10 +13,7 @@ export class Server extends Observable<
   [req: IncomingMessage, res: ServerResponse]
 > {
   public readonly _server: OriginalServer;
-  private readonly observers: Observer<
-    [req: IncomingMessage, res: ServerResponse]
-  >[];
-  private destroy$: Subject<void>;
+  private readonly destroy$: Subject<void>;
 
   constructor(options?: ServerOptions) {
     let server: OriginalServer;
@@ -44,22 +41,10 @@ export class Server extends Observable<
       });
 
     super((subscriber) => {
-      if (messages.closed) {
-        subscriber.complete();
-      } else if (messages.hasError) {
-        subscriber.error(messages.thrownError);
-      } else {
-        messages
-          .pipe(takeUntil(destroy$))
-          .subscribe((value) => {
-            subscriber.next(value);
-          })
-          .add(subscriber);
-      }
+      messages.pipe(takeUntil(destroy$)).subscribe(subscriber).add(subscriber);
     });
 
     this.destroy$ = destroy$;
-    this.observers = [];
     this._server = server;
   }
 

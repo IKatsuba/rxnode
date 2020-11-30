@@ -42,6 +42,8 @@
     "@types/node": "^10.17.42",
     "@typescript-eslint/eslint-plugin": "4.3.0",
     "@typescript-eslint/parser": "4.3.0",
+    "bluebird": "^3.7.2",
+    "cookie-parser": "^1.4.5",
     "dotenv": "6.2.0",
     "eslint": "7.10.0",
     "eslint-config-prettier": "6.0.0",
