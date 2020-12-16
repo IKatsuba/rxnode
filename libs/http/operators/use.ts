@@ -16,7 +16,7 @@ export type Middleware<T extends Messages, R extends Messages> = (
 export type ExpressMiddleware<
   I extends IncomingMessage,
   S extends ServerResponse
-> = (req: I, res: S, next: () => void) => void;
+> = (req: I, res: S, next: (err?: any | 'route') => void) => void;
 
 export function use<T extends Messages = Messages, R extends Messages = T>(
   middleware: Middleware<T, R>
@@ -44,15 +44,19 @@ export function useExpressMiddleware<
   R extends Messages = T
 >(middleware: ExpressMiddleware<T[0], T[1]>): OperatorFunction<T, R> {
   return concatMap<T, Observable<R>>(([req, res]) => {
-    return defer(
-      () =>
-        new Promise<R>((resolve, reject) => {
-          try {
-            middleware(req, res, () => resolve([req, res] as R));
-          } catch (e) {
-            reject(e);
+    return new Observable<R>((subscriber) => {
+      try {
+        middleware(req, res, (err?: any | 'route') => {
+          if (err && err !== 'route') {
+            subscriber.error(err);
+          } else {
+            subscriber.next([req, res] as R);
+            subscriber.complete();
           }
-        })
-    );
+        });
+      } catch (e) {
+        subscriber.error(e);
+      }
+    });
   });
 }
