@@ -21,7 +21,7 @@
     "help": "nx help",
     "lint": "nx workspace-lint && nx run-many --target=lint --all",
     "nx": "nx",
-    "release": "semantic-release",
+    "release": "nx run-many --target=release --all",
     "start": "nx serve",
     "test": "nx run-many --target=test --all",
     "update": "nx migrate latest",
