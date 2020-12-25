@@ -29,6 +29,14 @@
             "main": "libs/core/src/index.ts",
             "assets": ["libs/core/*.md"]
           }
+        },
+        "release": {
+          "builder": "@ng-builders/semrel:release",
+          "options": {
+            "npm": {
+              "pkgRoot": "./dist/libs/core"
+            }
+          }
         }
       }
     },
@@ -59,6 +67,14 @@
             "packageJson": "libs/fs/package.json",
             "main": "libs/fs/src/index.ts",
             "assets": ["libs/fs/*.md", "libs/fs/.npmignore"]
+          }
+        },
+        "release": {
+          "builder": "@ng-builders/semrel:release",
+          "options": {
+            "npm": {
+              "pkgRoot": "./dist/libs/fs"
+            }
           }
         }
       }
@@ -94,6 +110,14 @@
               "libs/child-process/.npmignore"
             ]
           }
+        },
+        "release": {
+          "builder": "@ng-builders/semrel:release",
+          "options": {
+            "npm": {
+              "pkgRoot": "./dist/libs/child-process"
+            }
+          }
         }
       }
     },
@@ -124,6 +148,14 @@
             "packageJson": "libs/http/package.json",
             "main": "libs/http/src/index.ts",
             "assets": ["libs/http/*.md"]
+          }
+        },
+        "release": {
+          "builder": "@ng-builders/semrel:release",
+          "options": {
+            "npm": {
+              "pkgRoot": "./dist/libs/http"
+            }
           }
         }
       }
