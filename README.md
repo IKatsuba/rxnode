@@ -6,7 +6,7 @@ Rxnode - a small and fast wrapper around the nodejs API using RxJS.
 
 ### We are supported by
 
-![](.gitbook/assets/gitbook.svg)
+[![](.gitbook/assets/gitbook.svg)](https://www.gitbook.com/)
 
-![](.gitbook/assets/jetbrains-variant-2.png)
+[![](.gitbook/assets/jetbrains-variant-2.png)](https://www.jetbrains.com/?from=rxnode)
 
