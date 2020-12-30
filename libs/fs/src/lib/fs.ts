@@ -46,15 +46,6 @@ import {
 import { observablify, watchify } from '@rxnode/core';
 import { defer, Observable } from 'rxjs';
 
-export {
-  BinaryData,
-  Dirent,
-  PathLike,
-  Stats,
-  WriteFileOptions,
-  MakeDirectoryOptions,
-};
-
 export function access(
   path: PathLike,
   mode: number | undefined
