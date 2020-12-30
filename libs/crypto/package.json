@@ -1,0 +1,29 @@
+{
+  "name": "@rxnode/crypto",
+  "version": "0.0.0-development",
+  "license": "MIT",
+  "keywords": [
+    "rxjs",
+    "node",
+    "rxnode",
+    "rx-node",
+    "crypto"
+  ],
+  "author": "Igor Katsuba <katsuba.igor@gmail.com>",
+  "description": "crypto package for rxnode",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IKatsuba/rxnode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/IKatsuba/rxnode/issues"
+  },
+  "homepage": "https://github.com/IKatsuba/rxnode#readme",
+  "peerDependencies": {
+    "rxjs": "6.6.3",
+    "@rxnode/core": "latest"
+  }
+}

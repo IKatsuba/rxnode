@@ -4,5 +4,6 @@ module.exports = {
     '<rootDir>/libs/fs',
     '<rootDir>/libs/child-process',
     '<rootDir>/libs/http',
+    '<rootDir>/libs/crypto',
   ],
 };
