@@ -159,6 +159,45 @@
           }
         }
       }
+    },
+    "crypto": {
+      "root": "libs/crypto",
+      "sourceRoot": "libs/crypto/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/crypto/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/crypto/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/crypto",
+            "tsConfig": "libs/crypto/tsconfig.lib.json",
+            "packageJson": "libs/crypto/package.json",
+            "main": "libs/crypto/src/index.ts",
+            "assets": ["libs/crypto/*.md"]
+          }
+        },
+        "release": {
+          "builder": "@ng-builders/semrel:release",
+          "options": {
+            "npm": {
+              "pkgRoot": "./dist/libs/crypto"
+            }
+          }
+        }
+      }
     }
   },
   "cli": {
