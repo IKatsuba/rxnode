@@ -1,4 +1,4 @@
-# fs
+# @rxnode/fs
 
 ### `access`
 
