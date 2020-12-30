@@ -1,4 +1,4 @@
-# child\_process
+# @rxnode/child\_process
 
 ### `exec`
 
