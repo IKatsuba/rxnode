@@ -10,7 +10,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/core/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/core/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -27,7 +29,9 @@
             "tsConfig": "libs/core/tsconfig.lib.json",
             "packageJson": "libs/core/package.json",
             "main": "libs/core/src/index.ts",
-            "assets": ["libs/core/*.md", "libs/core.md"]
+            "assets": [
+              "libs/core/*.md"
+            ]
           }
         },
         "release": {
@@ -49,7 +53,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/fs/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/fs/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -66,7 +72,10 @@
             "tsConfig": "libs/fs/tsconfig.lib.json",
             "packageJson": "libs/fs/package.json",
             "main": "libs/fs/src/index.ts",
-            "assets": ["libs/fs/*.md", "libs/fs.md", "libs/fs/.npmignore"]
+            "assets": [
+              "libs/fs/*.md",
+              "libs/fs/.npmignore"
+            ]
           }
         },
         "release": {
@@ -88,7 +97,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/child-process/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/child-process/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -131,7 +142,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/http/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/http/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -148,7 +161,9 @@
             "tsConfig": "libs/http/tsconfig.lib.json",
             "packageJson": "libs/http/package.json",
             "main": "libs/http/src/index.ts",
-            "assets": ["libs/http/*.md", "libs/http.md"]
+            "assets": [
+              "libs/http/*.md"
+            ]
           }
         },
         "release": {
@@ -170,7 +185,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/crypto/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/crypto/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -187,7 +204,9 @@
             "tsConfig": "libs/crypto/tsconfig.lib.json",
             "packageJson": "libs/crypto/package.json",
             "main": "libs/crypto/src/index.ts",
-            "assets": ["libs/crypto/*.md", "libs/crypto.md"]
+            "assets": [
+              "libs/crypto/*.md"
+            ]
           }
         },
         "release": {
