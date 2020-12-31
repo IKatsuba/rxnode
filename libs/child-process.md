@@ -1,6 +1,6 @@
-# @rxnode/child\_process
+# child\_process
 
-### `exec`
+## `exec`
 
 ```typescript
 function exec(command: string, options?: {
@@ -50,7 +50,7 @@ If `timeout` is greater than `0`, the parent will send the signal identified by 
 
 Unlike the [`exec(3)`](http://man7.org/linux/man-pages/man3/exec.3.html) POSIX system call, `exec()` does not replace the existing process and uses a shell to execute the command.
 
-#### `execFile` 
+### `execFile`
 
 ```typescript
 function execFile(file: string, args?: readonly string[], options?: {
@@ -87,6 +87,5 @@ execFile('node', ['--version']).subscribe({
 
 The `stdout` and `stderr` arguments passed to the stream will contain the stdout and stderr output of the child process. By default, Node.js will decode the output as UTF-8 and pass strings to the callback. The `encoding` option can be used to specify the character encoding used to decode the stdout and stderr output. If `encoding` is `'buffer'`, or an unrecognized character encoding, `Buffer` objects will be passed to the callback instead.
 
-**If the `shell` option is enabled, do not pass unsanitized user input to this function. Any input containing shell metacharacters may be used to trigger arbitrary command execution.**  
-
+**If the `shell` option is enabled, do not pass unsanitized user input to this function. Any input containing shell metacharacters may be used to trigger arbitrary command execution.**
 
