@@ -47,7 +47,7 @@
     "cookie-parser": "^1.4.5",
     "dotenv": "8.2.0",
     "eslint": "7.16.0",
-    "eslint-config-prettier": "6.0.0",
+    "eslint-config-prettier": "7.1.0",
     "jest": "26.2.2",
     "prettier": "2.1.2",
     "rxjs": "6.6.3",
