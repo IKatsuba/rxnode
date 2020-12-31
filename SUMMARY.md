@@ -4,6 +4,7 @@
 * [Libraries](libs/README.md)
   * [child\_process](libs/child-process/README.md)
   * [core](libs/core/README.md)
+  * [crypto](libs/crypto/README.md)
   * [http](libs/http/README.md)
   * [fs](libs/fs/README.md)
 * [License](license.md)
