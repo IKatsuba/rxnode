@@ -6,7 +6,8 @@
     "rxjs",
     "node",
     "rxnode",
-    "rx-node"
+    "rx-node",
+    "child_process"
   ],
   "author": "Igor Katsuba <katsuba.igor@gmail.com>",
   "description": "child_process package for rxnode",

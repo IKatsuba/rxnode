@@ -6,7 +6,9 @@
     "rxjs",
     "node",
     "rxnode",
-    "rx-node"
+    "rx-node",
+    "fs",
+    "file system"
   ],
   "author": "Igor Katsuba <katsuba.igor@gmail.com>",
   "description": "fs package for rxnode",

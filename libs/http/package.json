@@ -6,7 +6,8 @@
     "rxjs",
     "node",
     "rxnode",
-    "rx-node"
+    "rx-node",
+    "http"
   ],
   "author": "Igor Katsuba <katsuba.igor@gmail.com>",
   "description": "http package for rxnode",
