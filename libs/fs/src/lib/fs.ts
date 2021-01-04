@@ -1,7 +1,6 @@
 import {
   access as originalAccess,
   appendFile as originalAppendFile,
-  BinaryData,
   chmod as originalChmode,
   chown as originalChown,
   close as originalClose,
@@ -619,25 +618,25 @@ export function watchFile(
   >(originalWatchFile)(filename, options);
 }
 
-export function write<TBuffer extends BinaryData>(
+export function write<TBuffer extends NodeJS.ArrayBufferView>(
   fd: number,
   buffer: TBuffer,
   offset: number | undefined | null,
   length: number | undefined | null,
   position: number | undefined | null
 ): Observable<[written: number, buffer: TBuffer]>;
-export function write<TBuffer extends BinaryData>(
+export function write<TBuffer extends NodeJS.ArrayBufferView>(
   fd: number,
   buffer: TBuffer,
   offset: number | undefined | null,
   length: number | undefined | null
 ): Observable<[written: number, buffer: TBuffer]>;
-export function write<TBuffer extends BinaryData>(
+export function write<TBuffer extends NodeJS.ArrayBufferView>(
   fd: number,
   buffer: TBuffer,
   offset: number | undefined | null
 ): Observable<[written: number, buffer: TBuffer]>;
-export function write<TBuffer extends BinaryData>(
+export function write<TBuffer extends NodeJS.ArrayBufferView>(
   fd: number,
   buffer: TBuffer
 ): Observable<[written: number, buffer: TBuffer]>;
