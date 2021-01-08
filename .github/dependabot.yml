@@ -10,9 +10,54 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    assignees:
+      - "IKatsuba"
 
   # Maintain dependencies for npm
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "daily"
+    assignees:
+      - "IKatsuba"
+      
+  # Maintain dependencies for npm
+  - package-ecosystem: "npm"
+    directory: "/libs/child-process"
+    schedule:
+      interval: "daily"
+    assignees:
+      - "IKatsuba"
+      
+  # Maintain dependencies for npm
+  - package-ecosystem: "npm"
+    directory: "/libs/core"
+    schedule:
+      interval: "daily"
+    assignees:
+      - "IKatsuba"
+
+  # Maintain dependencies for npm
+  - package-ecosystem: "npm"
+    directory: "/libs/crypto"
+    schedule:
+      interval: "daily"
+    assignees:
+      - "IKatsuba"
+      
+  # Maintain dependencies for npm
+  - package-ecosystem: "npm"
+    directory: "/libs/fs"
+    schedule:
+      interval: "daily"
+    assignees:
+      - "IKatsuba"
+      
+      
+  # Maintain dependencies for npm
+  - package-ecosystem: "npm"
+    directory: "/libs/http"
+    schedule:
+      interval: "daily"
+    assignees:
+      - "IKatsuba"
