@@ -1,6 +1,6 @@
 # child\_process
 
-## `exec`
+### `exec`
 
 ```typescript
 function exec(command: string, options?: {

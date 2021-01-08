@@ -1,6 +1,6 @@
 # core
 
-## `observablify`
+### `observablify`
 
 ```typescript
 function observablify<A extends Arguments, R extends Results = []>(
@@ -8,7 +8,7 @@ function observablify<A extends Arguments, R extends Results = []>(
 ): (...args: A) => Observable<VoidOrItemOrItems<R>>
 ```
 
-## `watchify`
+### `watchify`
 
 ```typescript
 function watchify<A extends Arguments, R extends Results>(

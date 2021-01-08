@@ -1,6 +1,6 @@
 # fs
 
-## `access`
+### `access`
 
 ```typescript
 function(path: PathLike, mode?: number): Observable<void>
