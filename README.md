@@ -1,7 +1,3 @@
----
-description: Rxnode - a small and fast wrapper around the nodejs API using RxJS.
----
-
 # Rxnode
 
 ## Rxnode — reactive nodejs API
