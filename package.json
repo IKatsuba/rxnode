@@ -30,7 +30,7 @@
   "dependencies": {},
   "devDependencies": {
     "@ng-builders/semrel": "1.1.0",
-    "@nrwl/cli": "10.3.1",
+    "@nrwl/cli": "11.3.2",
     "@nrwl/eslint-plugin-nx": "10.4.4",
     "@nrwl/jest": "10.4.4",
     "@nrwl/node": "10.4.4",
