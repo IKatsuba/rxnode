@@ -1,4 +1,4 @@
-import { isPromiseLike } from '@rxnode/core';
+import { isPromiseLike } from './utils';
 import { Observable } from 'rxjs';
 import { Promise as BluebirdPromise } from 'bluebird';
 

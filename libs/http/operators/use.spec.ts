@@ -1,4 +1,4 @@
-import { get, Server } from '@rxnode/http';
+import { get, Server } from '../src/index';
 import { catchError, take } from 'rxjs/operators';
 import { Messages, use, useExpressMiddleware } from './use';
 import * as cookieParser from 'cookie-parser';
