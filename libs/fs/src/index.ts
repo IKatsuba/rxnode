@@ -1,7 +1,6 @@
 export * from './lib/fs';
 
 export {
-  BinaryData,
   Dirent,
   PathLike,
   Stats,

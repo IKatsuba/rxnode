@@ -1,7 +1,7 @@
 import {
   access as originalAccess,
   appendFile as originalAppendFile,
-  BinaryData,
+  BigIntStats,
   chmod as originalChmode,
   chown as originalChown,
   close as originalClose,
@@ -10,7 +10,7 @@ import {
   fchmod as originalFchmod,
   fchown as originalFchown,
   fdatasync as originalFdatasync,
-  fstat as originalFstat,
+  fstatSync as originalFstat,
   fsync as originalFsync,
   ftruncate as originalFtruncate,
   futimes as originalFutimes,
@@ -31,6 +31,7 @@ import {
   rename as originalRename,
   rmdir as originalRmdir,
   stat as originalStat,
+  StatOptions,
   Stats,
   symlink as originalSymlink,
   truncate as originalTruncate,
@@ -138,8 +139,19 @@ export function fdatasync(fd: number): Observable<void> {
   return observablify<[fd: number]>(originalFdatasync)(fd);
 }
 
-export function fstat(fd: number): Observable<Stats> {
-  return observablify<[fd: number], [stats: Stats]>(originalFstat)(fd);
+export function fstat(
+  fd: number,
+  options?: StatOptions & { bigint?: false | undefined }
+): Observable<Stats>;
+export function fstat(
+  fd: number,
+  options: StatOptions & { bigint: true }
+): Observable<BigIntStats>;
+export function fstat(
+  fd: number,
+  options?: StatOptions
+): Observable<Stats | BigIntStats> {
+  return defer(() => Promise.resolve(originalFstat(fd, options)));
 }
 
 export function fsync(fd: number): Observable<void> {
@@ -619,25 +631,25 @@ export function watchFile(
   >(originalWatchFile)(filename, options);
 }
 
-export function write<TBuffer extends BinaryData>(
+export function write<TBuffer extends NodeJS.ArrayBufferView>(
   fd: number,
   buffer: TBuffer,
   offset: number | undefined | null,
   length: number | undefined | null,
   position: number | undefined | null
 ): Observable<[written: number, buffer: TBuffer]>;
-export function write<TBuffer extends BinaryData>(
+export function write<TBuffer extends NodeJS.ArrayBufferView>(
   fd: number,
   buffer: TBuffer,
   offset: number | undefined | null,
   length: number | undefined | null
 ): Observable<[written: number, buffer: TBuffer]>;
-export function write<TBuffer extends BinaryData>(
+export function write<TBuffer extends NodeJS.ArrayBufferView>(
   fd: number,
   buffer: TBuffer,
   offset: number | undefined | null
 ): Observable<[written: number, buffer: TBuffer]>;
-export function write<TBuffer extends BinaryData>(
+export function write<TBuffer extends NodeJS.ArrayBufferView>(
   fd: number,
   buffer: TBuffer
 ): Observable<[written: number, buffer: TBuffer]>;

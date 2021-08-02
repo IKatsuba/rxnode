@@ -1,6 +1,6 @@
 {
   "name": "@rxnode/fs",
-  "version": "0.0.0-development",
+  "version": "0.0.0-stub",
   "license": "MIT",
   "keywords": [
     "rxjs",
@@ -25,6 +25,6 @@
   "homepage": "https://github.com/IKatsuba/rxnode#readme",
   "peerDependencies": {
     "rxjs": "6.6.3",
-    "@rxnode/core": "latest"
+    "@rxnode/core": "0.0.0-stub"
   }
 }
