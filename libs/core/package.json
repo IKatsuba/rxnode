@@ -1,6 +1,6 @@
 {
   "name": "@rxnode/core",
-  "version": "0.0.0-development",
+  "version": "0.0.0-stub",
   "license": "MIT",
   "keywords": [
     "rxjs",

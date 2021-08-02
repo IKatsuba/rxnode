@@ -1,93 +1,6 @@
 {
   "version": 1,
   "projects": {
-    "core": {
-      "root": "libs/core",
-      "sourceRoot": "libs/core/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/core/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/core/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "build": {
-          "builder": "@nrwl/node:package",
-          "options": {
-            "outputPath": "dist/libs/core",
-            "tsConfig": "libs/core/tsconfig.lib.json",
-            "packageJson": "libs/core/package.json",
-            "main": "libs/core/src/index.ts",
-            "assets": [
-              "libs/core/*.md"
-            ]
-          }
-        },
-        "release": {
-          "builder": "@ng-builders/semrel:release",
-          "options": {
-            "npm": {
-              "pkgRoot": "./dist/libs/core"
-            }
-          }
-        }
-      }
-    },
-    "fs": {
-      "root": "libs/fs",
-      "sourceRoot": "libs/fs/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/fs/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/fs/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "build": {
-          "builder": "@nrwl/node:package",
-          "options": {
-            "outputPath": "dist/libs/fs",
-            "tsConfig": "libs/fs/tsconfig.lib.json",
-            "packageJson": "libs/fs/package.json",
-            "main": "libs/fs/src/index.ts",
-            "assets": [
-              "libs/fs/*.md",
-              "libs/fs/.npmignore"
-            ]
-          }
-        },
-        "release": {
-          "builder": "@ng-builders/semrel:release",
-          "options": {
-            "npm": {
-              "pkgRoot": "./dist/libs/fs"
-            }
-          }
-        }
-      }
-    },
     "child-process": {
       "root": "libs/child-process",
       "sourceRoot": "libs/child-process/src",
@@ -97,9 +10,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/child-process/**/*.ts"
-            ]
+            "lintFilePatterns": ["libs/child-process/**/*.ts"]
           }
         },
         "test": {
@@ -107,7 +18,8 @@
           "options": {
             "jestConfig": "libs/child-process/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/child-process"]
         },
         "build": {
           "builder": "@nrwl/node:package",
@@ -121,7 +33,8 @@
               "libs/child-process.md",
               "libs/child-process/.npmignore"
             ]
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "release": {
           "builder": "@ng-builders/semrel:release",
@@ -133,44 +46,42 @@
         }
       }
     },
-    "http": {
-      "root": "libs/http",
-      "sourceRoot": "libs/http/src",
+    "core": {
+      "root": "libs/core",
+      "sourceRoot": "libs/core/src",
       "projectType": "library",
       "schematics": {},
       "architect": {
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/http/**/*.ts"
-            ]
+            "lintFilePatterns": ["libs/core/**/*.ts"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "libs/http/jest.config.js",
+            "jestConfig": "libs/core/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/core"]
         },
         "build": {
           "builder": "@nrwl/node:package",
           "options": {
-            "outputPath": "dist/libs/http",
-            "tsConfig": "libs/http/tsconfig.lib.json",
-            "packageJson": "libs/http/package.json",
-            "main": "libs/http/src/index.ts",
-            "assets": [
-              "libs/http/*.md"
-            ]
-          }
+            "outputPath": "dist/libs/core",
+            "tsConfig": "libs/core/tsconfig.lib.json",
+            "packageJson": "libs/core/package.json",
+            "main": "libs/core/src/index.ts",
+            "assets": ["libs/core/*.md"]
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "release": {
           "builder": "@ng-builders/semrel:release",
           "options": {
             "npm": {
-              "pkgRoot": "./dist/libs/http"
+              "pkgRoot": "./dist/libs/core"
             }
           }
         }
@@ -185,9 +96,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/crypto/**/*.ts"
-            ]
+            "lintFilePatterns": ["libs/crypto/**/*.ts"]
           }
         },
         "test": {
@@ -195,7 +104,8 @@
           "options": {
             "jestConfig": "libs/crypto/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/crypto"]
         },
         "build": {
           "builder": "@nrwl/node:package",
@@ -204,16 +114,97 @@
             "tsConfig": "libs/crypto/tsconfig.lib.json",
             "packageJson": "libs/crypto/package.json",
             "main": "libs/crypto/src/index.ts",
-            "assets": [
-              "libs/crypto/*.md"
-            ]
-          }
+            "assets": ["libs/crypto/*.md"]
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "release": {
           "builder": "@ng-builders/semrel:release",
           "options": {
             "npm": {
               "pkgRoot": "./dist/libs/crypto"
+            }
+          }
+        }
+      }
+    },
+    "fs": {
+      "root": "libs/fs",
+      "sourceRoot": "libs/fs/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/fs/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/fs/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/fs"]
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/fs",
+            "tsConfig": "libs/fs/tsconfig.lib.json",
+            "packageJson": "libs/fs/package.json",
+            "main": "libs/fs/src/index.ts",
+            "assets": ["libs/fs/*.md", "libs/fs/.npmignore"]
+          },
+          "outputs": ["{options.outputPath}"]
+        },
+        "release": {
+          "builder": "@ng-builders/semrel:release",
+          "options": {
+            "npm": {
+              "pkgRoot": "./dist/libs/fs"
+            }
+          }
+        }
+      }
+    },
+    "http": {
+      "root": "libs/http",
+      "sourceRoot": "libs/http/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/http/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/http/jest.config.js",
+            "passWithNoTests": true
+          },
+          "outputs": ["coverage/libs/http"]
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/http",
+            "tsConfig": "libs/http/tsconfig.lib.json",
+            "packageJson": "libs/http/package.json",
+            "main": "libs/http/src/index.ts",
+            "assets": ["libs/http/*.md"]
+          },
+          "outputs": ["{options.outputPath}"]
+        },
+        "release": {
+          "builder": "@ng-builders/semrel:release",
+          "options": {
+            "npm": {
+              "pkgRoot": "./dist/libs/http"
             }
           }
         }

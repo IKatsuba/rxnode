@@ -1,6 +1,6 @@
 {
   "name": "@rxnode/child_process",
-  "version": "0.0.1",
+  "version": "0.0.0-stub",
   "license": "MIT",
   "keywords": [
     "rxjs",
@@ -24,6 +24,6 @@
   "homepage": "https://github.com/IKatsuba/rxnode#readme",
   "peerDependencies": {
     "rxjs": "6.6.3",
-    "@rxnode/core": "latest"
+    "@rxnode/core": "0.0.0-stub"
   }
 }
