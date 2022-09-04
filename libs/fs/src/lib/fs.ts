@@ -533,7 +533,7 @@ export function unwatchFile(
   filename: PathLike,
   listener?: (curr: Stats, prev: Stats) => void
 ): Observable<void> {
-  return defer(() => originalUnwatchFile(filename, listener));
+  return defer(() => [originalUnwatchFile(filename, listener)]);
 }
 
 export function utimes(

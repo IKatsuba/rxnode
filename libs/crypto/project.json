@@ -1,0 +1,41 @@
+{
+  "sourceRoot": "libs/crypto/src",
+  "projectType": "library",
+  "generators": {},
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/crypto/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/crypto/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/libs/crypto"]
+    },
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "options": {
+        "outputPath": "dist/libs/crypto",
+        "tsConfig": "libs/crypto/tsconfig.lib.json",
+        "packageJson": "libs/crypto/package.json",
+        "main": "libs/crypto/src/index.ts",
+        "assets": ["libs/crypto/*.md"]
+      },
+      "outputs": ["{options.outputPath}"]
+    },
+    "release": {
+      "executor": "@ng-builders/semrel:release",
+      "options": {
+        "npm": {
+          "pkgRoot": "./dist/libs/crypto"
+        }
+      }
+    }
+  },
+  "tags": []
+}

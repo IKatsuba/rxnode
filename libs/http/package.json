@@ -1,6 +1,7 @@
 {
   "name": "@rxnode/http",
   "version": "0.0.0-stub",
+  "initialVersion": "1.0.0",
   "license": "MIT",
   "keywords": [
     "rxjs",
@@ -23,7 +24,7 @@
   },
   "homepage": "https://github.com/IKatsuba/rxnode#readme",
   "peerDependencies": {
-    "rxjs": "6.6.3",
+    "rxjs": ">= 7.0.0 < 8.0.0",
     "@rxnode/core": "0.0.0-stub"
   }
 }

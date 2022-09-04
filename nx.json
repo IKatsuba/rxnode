@@ -19,42 +19,20 @@
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ],
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
         "accessToken": "NDk4MjNmOTctODI4NS00YWJiLTk3NjktY2QzMjIxOTA1MmE0fHJlYWQtd3JpdGU=",
         "canTrackAnalytics": false,
         "showUsageWarnings": true,
-        "strictlyOrderedTargets": ["build", "release"]
+        "strictlyOrderedTargets": ["build", "release"],
+        "parallel": 3
       }
     }
   },
-  "projects": {
-    "child-process": {
-      "tags": []
-    },
-    "core": {
-      "tags": []
-    },
-    "crypto": {
-      "tags": []
-    },
-    "fs": {
-      "tags": []
-    },
-    "http": {
-      "tags": []
+  "defaultProject": "core",
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "targetDefaults": {
+    "build": {
+      "dependsOn": ["^build"]
     }
-  },
-  "targetDependencies": {
-    "build": [
-      {
-        "target": "build",
-        "projects": "dependencies"
-      }
-    ]
   }
 }

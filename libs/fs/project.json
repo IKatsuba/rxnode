@@ -1,0 +1,41 @@
+{
+  "sourceRoot": "libs/fs/src",
+  "projectType": "library",
+  "generators": {},
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/fs/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/fs/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/libs/fs"]
+    },
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "options": {
+        "outputPath": "dist/libs/fs",
+        "tsConfig": "libs/fs/tsconfig.lib.json",
+        "packageJson": "libs/fs/package.json",
+        "main": "libs/fs/src/index.ts",
+        "assets": ["libs/fs/*.md", "libs/fs/.npmignore"]
+      },
+      "outputs": ["{options.outputPath}"]
+    },
+    "release": {
+      "executor": "@ng-builders/semrel:release",
+      "options": {
+        "npm": {
+          "pkgRoot": "./dist/libs/fs"
+        }
+      }
+    }
+  },
+  "tags": []
+}

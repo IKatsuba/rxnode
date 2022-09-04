@@ -4,76 +4,53 @@ on:
   pull_request:
     branches:
       - master
-      - next
-      - beta
+env:
+  PVM_LL: silly
 
 jobs:
+  mark-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 100
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v2.1.5
+        with:
+          node-version: 16.x
+      - run: npm ci
+      - run: npm run build
+      - run: npm exec pvm mark-pr
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.4
-      - name: Use Node.js 12.x
+      - name: Use Node.js 16.x
         uses: actions/setup-node@v2.1.5
         with:
-          node-version: 12.x
-      - name: NX Cache
-        uses: actions/cache@v2.1.6
-        with:
-          path: ./.cache
-          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
-      - name: Install
-        run: |
-          npm ci
-        env:
-          CI: true
-      - name: Build
-        run: |
-          npm run build
-        env:
-          CI: true
+          node-version: 16.x
+      - run: npm ci
+      - run: npm run build
   lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.4
-      - name: Use Node.js 12.x
+      - name: Use Node.js 16.x
         uses: actions/setup-node@v2.1.5
         with:
           node-version: 12.x
-      - name: NX Cache
-        uses: actions/cache@v2.1.6
-        with:
-          path: ./.cache
-          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
-      - name: Install
-        run: |
-          npm ci
-        env:
-          CI: true
-      - name: Lint
-        run: |
-          npm run lint
-        env:
-          CI: true
+      - run: npm ci
+      - run: npm run lint
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.4
-      - name: Use Node.js 12.x
+      - name: Use Node.js 16.x
         uses: actions/setup-node@v2.1.5
         with:
-          node-version: 12.x
-      - name: NX Cache
-        uses: actions/cache@v2.1.6
-        with:
-          path: ./.cache
-          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
-      - name: Install
-        run: |
-          npm ci
-        env:
-          CI: true
-      - name: Test
-        run: |
-          npm test
-        env:
-          CI: true
+          node-version: 16.x
+      - run: npm ci
+      - run: npm test

@@ -8,7 +8,9 @@ describe('http', () => {
   beforeAll(async () => {
     server = new Server();
 
-    server.listen(4200, 'localhost').subscribe();
+    await new Promise((resolve) => {
+      server.listen(4201, 'localhost').subscribe(resolve);
+    });
 
     server.subscribe(([, res]) => {
       res.writeHead(200);
@@ -18,7 +20,7 @@ describe('http', () => {
 
   describe('get', () => {
     it('should ping', async () => {
-      expect(await get('http://localhost:4200').toPromise()).toBeInstanceOf(
+      expect(await get('http://localhost:4201').toPromise()).toBeInstanceOf(
         IncomingMessage
       );
     });
