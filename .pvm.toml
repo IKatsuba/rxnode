@@ -1,0 +1,30 @@
+[versioning]
+unified = ['/libs/*']
+source = 'tag'
+include_root = false
+
+[publish.path_mapping]
+'libs' = 'dist/libs'
+
+[changelog]
+front_matter = """
+id: index
+title: Change Log"""
+
+[mark_pr]
+analyze_update = false
+packages_as_labels = false
+packages_table = true
+packages_graph = false
+attach_changelog = true
+
+[publish]
+registry = 'https://registry.npmjs.org'
+cli_args = '--access public'
+
+[update]
+default_release_type = 'patch'
+commit_via_platform = false
+retry_via_platform_if_failed_via_vcs = false
+include_root = false
+dependants_release_type = 'as-dep'

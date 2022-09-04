@@ -1,13 +1,14 @@
-module.exports = {
-  displayName: 'core',
+/* eslint-disable */
+export default {
+  displayName: 'http',
   preset: '../../jest.preset.js',
   globals: {
     'ts-jest': { tsconfig: '<rootDir>/tsconfig.spec.json' },
   },
+  testEnvironment: 'node',
   transform: {
     '^.+\\.[tj]sx?$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../coverage/libs/core',
-  testEnvironment: 'node',
+  coverageDirectory: '../../coverage/libs/http',
 };

@@ -1,0 +1,41 @@
+{
+  "sourceRoot": "libs/core/src",
+  "projectType": "library",
+  "generators": {},
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/core/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/core/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/libs/core"]
+    },
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "options": {
+        "outputPath": "dist/libs/core",
+        "tsConfig": "libs/core/tsconfig.lib.json",
+        "packageJson": "libs/core/package.json",
+        "main": "libs/core/src/index.ts",
+        "assets": ["libs/core/*.md"]
+      },
+      "outputs": ["{options.outputPath}"]
+    },
+    "release": {
+      "executor": "@ng-builders/semrel:release",
+      "options": {
+        "npm": {
+          "pkgRoot": "./dist/libs/core"
+        }
+      }
+    }
+  },
+  "tags": []
+}

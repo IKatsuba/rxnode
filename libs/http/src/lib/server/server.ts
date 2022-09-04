@@ -41,7 +41,7 @@ export class Server extends Observable<
       });
 
     super((subscriber) => {
-      messages.pipe(takeUntil(destroy$)).subscribe(subscriber).add(subscriber);
+      return messages.pipe(takeUntil(destroy$)).subscribe(subscriber);
     });
 
     this.destroy$ = destroy$;
@@ -143,7 +143,7 @@ export class Server extends Observable<
   emit(event: 'error', err: Error): boolean;
   emit(event: 'listening'): boolean;
   emit(
-    event: string | symbol | 'close' | 'connection' | 'error' | 'listening',
+    event: string | 'close' | 'connection' | 'error' | 'listening',
     ...args: any[]
   ): boolean {
     return this._server.emit(event, ...args);

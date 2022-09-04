@@ -1,0 +1,41 @@
+{
+  "sourceRoot": "libs/http/src",
+  "projectType": "library",
+  "generators": {},
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/http/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/http/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/libs/http"]
+    },
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "options": {
+        "outputPath": "dist/libs/http",
+        "tsConfig": "libs/http/tsconfig.lib.json",
+        "packageJson": "libs/http/package.json",
+        "main": "libs/http/src/index.ts",
+        "assets": ["libs/http/*.md"]
+      },
+      "outputs": ["{options.outputPath}"]
+    },
+    "release": {
+      "executor": "@ng-builders/semrel:release",
+      "options": {
+        "npm": {
+          "pkgRoot": "./dist/libs/http"
+        }
+      }
+    }
+  },
+  "tags": []
+}

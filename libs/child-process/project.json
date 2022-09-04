@@ -1,0 +1,45 @@
+{
+  "sourceRoot": "libs/child-process/src",
+  "projectType": "library",
+  "generators": {},
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/child-process/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/child-process/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "outputs": ["coverage/libs/child-process"]
+    },
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "options": {
+        "outputPath": "dist/libs/child-process",
+        "tsConfig": "libs/child-process/tsconfig.lib.json",
+        "packageJson": "libs/child-process/package.json",
+        "main": "libs/child-process/src/index.ts",
+        "assets": [
+          "libs/child-process/*.md",
+          "libs/child-process.md",
+          "libs/child-process/.npmignore"
+        ]
+      },
+      "outputs": ["{options.outputPath}"]
+    },
+    "release": {
+      "executor": "@ng-builders/semrel:release",
+      "options": {
+        "npm": {
+          "pkgRoot": "./dist/libs/child-process"
+        }
+      }
+    }
+  },
+  "tags": []
+}
