@@ -117,13 +117,13 @@ While working on the library, she looked at the RxJS logo and asked me, "Is this
 
 ## Packages
 
-- [x] [child_process](docs/libs/child-process.md)
+- [x] [child_process](libs/child-process.md)
 - [ ] cluster
-- [x] [crypto](docs/libs/crypto.md)
+- [x] [crypto](libs/crypto.md)
 - [ ] dns
 - [ ] events
-- [x] [fs](docs/libs/fs.md)
-- [x] [http](docs/libs/http.md)
+- [x] [fs](libs/fs.md)
+- [x] [http](libs/http.md)
 - [ ] http2
 - [ ] https
 - [ ] inspector

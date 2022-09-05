@@ -29,4 +29,3 @@ npm run test
 2. Update [README.md](./) to reflect changes related to public API and everything relevant
 3. Make sure you cover all code changes with unit tests
 4. When you are ready, create Pull Request of your fork into the original repository
-

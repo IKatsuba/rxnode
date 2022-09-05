@@ -1,9 +1,11 @@
-# child\_process
+# child_process
 
 ### `exec`
 
 ```typescript
-function exec(command: string, options?: {
+function exec(
+  command: string,
+  options?: {
     encoding?: string | BufferEncoding | null | 'buffer';
     cwd?: string;
     env?: NodeJS.ProcessEnv;
@@ -14,7 +16,8 @@ function exec(command: string, options?: {
     uid?: number;
     gid?: number;
     windowsHide?: boolean;
-}): Observable<[stdout: string | Buffer, stderr: string | Buffer]>
+  }
+): Observable<[stdout: string | Buffer, stderr: string | Buffer]>;
 ```
 
 Spawns a shell then executes the `command` within that shell, buffering any generated output. The `command` string passed to the exec function is processed directly by the shell, and special characters \(vary based on [shell](https://en.wikipedia.org/wiki/List_of_command-line_interpreters)\) need to be dealt with accordingly:
@@ -36,13 +39,13 @@ The `stdout` and `stderr` arguments passed to the stream will contain the stdout
 import { exec } from '@rxnode/child_process';
 
 exec('cat *.js missing_file | wc -l').subscribe({
-    next([stdout, stderr]) {
-      console.log(`stdout: ${stdout}`);
-      console.error(`stderr: ${stderr}`);
-    },
-    error(error) {
-      console.error(`exec error: ${error}`);
-    }
+  next([stdout, stderr]) {
+    console.log(`stdout: ${stdout}`);
+    console.error(`stderr: ${stderr}`);
+  },
+  error(error) {
+    console.error(`exec error: ${error}`);
+  },
 });
 ```
 
@@ -53,7 +56,10 @@ Unlike the [`exec(3)`](http://man7.org/linux/man-pages/man3/exec.3.html) POSIX s
 ### `execFile`
 
 ```typescript
-function execFile(file: string, args?: readonly string[], options?: {
+function execFile(
+  file: string,
+  args?: readonly string[],
+  options?: {
     encoding?: string | null | BufferEncoding;
     cwd?: string;
     env?: NodeJS.ProcessEnv;
@@ -65,7 +71,8 @@ function execFile(file: string, args?: readonly string[], options?: {
     windowsHide?: boolean;
     windowsVerbatimArguments?: boolean;
     shell?: boolean | string;
-}): Observable<[stdout: string | Buffer, stderr: string | Buffer]>
+  }
+): Observable<[stdout: string | Buffer, stderr: string | Buffer]>;
 ```
 
 The `execFile()` function is similar to [`exec()`](child-process.md#exec) except that it does not spawn a shell by default. Rather, the specified executable `file` is spawned directly as a new process making it slightly more efficient than [`exec()`](child-process.md#exec).
@@ -76,16 +83,15 @@ The same options as [`exec()`](child-process.md#exec) are supported. Since a she
 import { execFile } from '@rxnode/child_process';
 
 execFile('node', ['--version']).subscribe({
-    next([stdout, stderr]) {
-      console.log(stdout);
-    },
-    error(error) {
-      console.error(`exec error: ${error}`);
-    }
+  next([stdout, stderr]) {
+    console.log(stdout);
+  },
+  error(error) {
+    console.error(`exec error: ${error}`);
+  },
 });
 ```
 
 The `stdout` and `stderr` arguments passed to the stream will contain the stdout and stderr output of the child process. By default, Node.js will decode the output as UTF-8 and pass strings to the callback. The `encoding` option can be used to specify the character encoding used to decode the stdout and stderr output. If `encoding` is `'buffer'`, or an unrecognized character encoding, `Buffer` objects will be passed to the callback instead.
 
 **If the `shell` option is enabled, do not pass unsanitized user input to this function. Any input containing shell metacharacters may be used to trigger arbitrary command execution.**
-

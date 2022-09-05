@@ -17,43 +17,44 @@ const file = 'package.json';
 
 // Check if the file exists in the current directory.
 access(file, fs.constants.F_OK).subscribe({
-  next(){
+  next() {
     console.log(`${file} exists`);
   },
-  error(err){
+  error(err) {
     console.log(`${file} does not exist`);
-  }
+  },
 });
 
 // Check if the file is readable.
 access(file, fs.constants.R_OK).subscribe({
-  next(){
+  next() {
     console.log(`${file} is readable`);
   },
-  error(err){
+  error(err) {
     console.log(`${file} is not readable`);
-  }
+  },
 });
 
 // Check if the file is writable.
 access(file, fs.constants.W_OK).subscribe({
-  next(){
+  next() {
     console.log(`${file} is writable`);
   },
-  error(err){
+  error(err) {
     console.log(`${file} is not writable`);
-  }
+  },
 });
 
 // Check if the file exists in the current directory, and if it is writable.
 access(file, fs.constants.F_OK | fs.constants.W_OK).subscribe({
-  next(){
+  next() {
     console.log(`${file} exists, and it is writable`);
   },
-  error(err){
+  error(err) {
     console.error(
-      `${file} ${err.code === 'ENOENT' ? 'does not exist' : 'is read-only'}`);
-  }
+      `${file} ${err.code === 'ENOENT' ? 'does not exist' : 'is read-only'}`
+    );
+  },
 });
 ```
 
@@ -65,14 +66,14 @@ Do not use `access()` to check for the accessibility of a file before calling `o
 import { access, open } from '@rxnode/fs';
 
 access('myfile').subscribe({
-    next(){
-      console.error('myfile already exists');
-    },
-    error() {
-      open('myfile', 'wx').subscribe((fd) => {
-        writeMyData(fd);
-      });
-    }
+  next() {
+    console.error('myfile already exists');
+  },
+  error() {
+    open('myfile', 'wx').subscribe((fd) => {
+      writeMyData(fd);
+    });
+  },
 });
 ```
 
@@ -81,9 +82,7 @@ access('myfile').subscribe({
 ```typescript
 import { open } from '@rxnode/fs';
 
-open('myfile', 'wx').subscribe(
-    fd => writeMyData(fd)
-);
+open('myfile', 'wx').subscribe((fd) => writeMyData(fd));
 ```
 
 **read \(NOT RECOMMENDED\)**
@@ -92,7 +91,7 @@ open('myfile', 'wx').subscribe(
 import { access, open } from '@rxnode/fs';
 
 access('myfile').subscribe(() => {
-  open('myfile', 'r').subscribe(fb => readMyData(fd));
+  open('myfile', 'r').subscribe((fb) => readMyData(fd));
 });
 ```
 
@@ -101,7 +100,7 @@ access('myfile').subscribe(() => {
 ```typescript
 import { open } from '@rxnode/fs';
 
-open('myfile', 'r').subscribe(fd => {
+open('myfile', 'r').subscribe((fd) => {
   readMyData(fd);
 });
 ```
@@ -111,4 +110,3 @@ The "not recommended" examples above check for accessibility and then use the fi
 In general, check for the accessibility of a file only if the file will not be used directly, for example when its accessibility is a signal from another process.
 
 On Windows, access-control policies \(ACLs\) on a directory may limit access to a file or directory. The `fs.access()` function, however, does not check the ACL and therefore may report that a path is accessible even if the ACL restricts the user from reading or writing to it.
-
