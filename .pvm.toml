@@ -10,6 +10,7 @@ include_root = false
 front_matter = """
 id: index
 title: Change Log"""
+path = 'docs/changelog.md'
 
 [mark_pr]
 analyze_update = false
