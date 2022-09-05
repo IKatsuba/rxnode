@@ -2,7 +2,7 @@
 
 ## Rxnode — reactive nodejs API
 
-![](.gitbook/assets/image%20%281%29.png)
+![](docs/assets/image%20%281%29.png)
 
 At the beginning of 2020, my career as a frontend developer turned in an unexpected direction for me. I haven't written a single Angular component in a year. I Replaced Angular with server code and code for the CLI. It was a new and interesting experience for me, but it wasn't easy to solve my usual tasks without RxJS.
 
@@ -140,4 +140,4 @@ While working on the library, she looked at the RxJS logo and asked me, "Is this
 
 ## We are supported by
 
-[![](.gitbook/assets/gitbook.svg)](https://www.gitbook.com/)[![](.gitbook/assets/jetbrains-variant-2.png)](https://www.jetbrains.com/?from=rxnode)
+[![](docs/assets/gitbook.svg)](https://www.gitbook.com/)
